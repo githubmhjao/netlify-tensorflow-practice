@@ -98,3 +98,16 @@ body {
   justify-content: center;
   color: white;
 }
+
+.input-number {
+  font-size: 32px;
+  max-width: 170px;
+  flex: 1;
+  display: inline-block;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: Courier;
+  color: #2d7bee;
+  font-weight: bold;
+}
