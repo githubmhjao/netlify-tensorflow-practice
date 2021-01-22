@@ -25,7 +25,6 @@ async function run() {
 
   tfvis.render.scatterplot(
     containerScatter,
-    {name: 'Horsepower v MPG'},
     {values}, 
     {
       xLabel: 'Horsepower',
