@@ -131,6 +131,29 @@ async function trainModel(model, inputs, labels) {
   });
 }
 
+function Parameter() {
+  const [inputValue, setInputValue] = useState(50)
+  const handleInputChange = (e) => {
+    const { value } = e.target
+    setInputValue(value)
+  }
+  
+  return (
+    <div className="container">
+      <div className="card-header">PARAMETER</div>
+      <div className="card-body" id="container-parameter">
+        <input
+              type="number"
+              onChange={handleInputChange}
+              value={inputValue}
+              className="input-number"
+              min="5"
+            />
+      </div>
+    </div>
+  )
+}
+
 function Card(props) {
   return (
     <div className="container">
@@ -141,8 +164,11 @@ function Card(props) {
 }
 
 function App() {
-  const cards = ["parameter", "scatter", "model", "train"]
-  return cards.map((card, i) => <Card key={i} title={card}/>)
+  const cards = ["scatter", "model", "train"]
+  return (<>
+    <Parameter />
+    {cards.map((card, i) => <Card key={i} title={card}/>)}
+  </>)
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
