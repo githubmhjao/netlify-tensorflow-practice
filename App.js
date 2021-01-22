@@ -4,7 +4,7 @@ function App() {
   const cards = ["parameter", "scatter", "model", "train"]
   return (
     <>
-      cards.map(card => <Card title={card} />)
+      cards.map((card, i) => <Card key={i} title={card} />)
     </>
   )
 }
