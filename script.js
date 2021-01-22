@@ -1,3 +1,4 @@
+import App from "./App"
 const { useState } = React;
 
 /**
@@ -131,15 +132,5 @@ async function trainModel(model, inputs, labels) {
   });
 }
 
-function TensorFlowDemo() {
-  return (
-    <>
-      <div id="container-scatter" className="container" />
-      <div id="container-model" className="container" />
-      <div id="container-train" className="container" />
-    </>
-  )
-} 
-
-ReactDOM.render(<TensorFlowDemo />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
 run()
