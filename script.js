@@ -2,6 +2,8 @@
  * Get the car data reduced to just the variables we are interested
  * and cleaned of missing data.
  */
+const containerScatter = document.getElementById("container-scatter")
+
 async function getData() {
   const carsDataResponse = await fetch('https://storage.googleapis.com/tfjs-tutorials/carsData.json');  
   const carsData = await carsDataResponse.json();  
@@ -23,6 +25,7 @@ async function run() {
   }));
 
   tfvis.render.scatterplot(
+    containerScatter,
     {name: 'Horsepower v MPG'},
     {values}, 
     {
