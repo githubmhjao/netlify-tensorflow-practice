@@ -136,7 +136,7 @@ function Card(props) {
     <div className="container">
       <div className="card-header">{props.title.toUpperCase()}</div>
       <div className="card-body" id={`container-${props.title}`} />
-    </>
+    </div>
   )
 }
 
