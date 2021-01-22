@@ -1,4 +1,3 @@
-import App from "./App"
 const { useState } = React;
 
 /**
@@ -130,6 +129,20 @@ async function trainModel(model, inputs, labels) {
       { height: 200, callbacks: ['onEpochEnd'] }
     )
   });
+}
+
+function Card(props) {
+  return (
+    <div className="container">
+      <div className="card-header">{props.title.toUpperCase()}</div>
+      <div className="card-body" id={`container-${props.title}`} />
+    </>
+  )
+}
+
+function App() {
+  const cards = ["parameter", "scatter", "model", "train"]
+  return cards.map((card, i) => <Card key={i} title={card}/>)
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
