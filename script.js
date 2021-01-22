@@ -1,3 +1,5 @@
+const { useState } = React;
+
 /**
  * Get the car data reduced to just the variables we are interested
  * and cleaned of missing data.
@@ -129,5 +131,15 @@ async function trainModel(model, inputs, labels) {
   });
 }
 
+function TensorFlowDemo() {
+  return (
+    <>
+      <div id="container-scatter" className="container" />
+      <div id="container-model" className="container" />
+      <div id="container-train" className="container" />
+    </>
+  )
+} 
 
 document.addEventListener('DOMContentLoaded', run);
+ReactDOM.render(<TensorFlowDemo />, document.getElementById("root"));
