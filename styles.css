@@ -22,6 +22,13 @@ body {
   );
 }
 
+# root {
+  display: grid;
+  grid-template-column: 1fr 1fr;
+  grid-column-gap: 5%;
+  grid-row-gap: 5%;
+}
+
 .container {
   display: flex;
   flex-direction: column;
