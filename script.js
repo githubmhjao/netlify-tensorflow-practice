@@ -150,8 +150,8 @@ function Parameter() {
               min="5"
             />
       </div>
+      <div className="card-footer" onClick={() => run(inputValue)}>Start Training</div>
     </div>
-    <div className="card-footer" onClick={() => run(inputValue)}>Start Training</div>
   )
 }
 
