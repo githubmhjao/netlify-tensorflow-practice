@@ -16,7 +16,7 @@ async function getData() {
   return cleaned;
 }
 
-async function run() {
+async function run(inputEpochs) {
   // Load and plot the original input data that we are going to train on.
   const containerScatter = document.getElementById("container-scatter")
   const data = await getData();
@@ -45,7 +45,7 @@ async function run() {
   const {inputs, labels} = tensorData;
     
   // Train the model  
-  await trainModel(model, inputs, labels);
+  await trainModel(model, inputs, labels, inputEpochs);
   console.log('Done Training');
 
 }
@@ -107,7 +107,7 @@ function convertToTensor(data) {
 }
 
 
-async function trainModel(model, inputs, labels) {
+async function trainModel(model, inputs, labels, inputEpochs) {
   // Prepare the model for training.  
   model.compile({
     optimizer: tf.train.adam(),
@@ -116,7 +116,7 @@ async function trainModel(model, inputs, labels) {
   });
   
   const batchSize = 32;
-  const epochs = 50;
+  const epochs = inputEpochs;
   const containerTrain = document.getElementById('container-train')
   
   return await model.fit(inputs, labels, {
@@ -151,6 +151,7 @@ function Parameter() {
             />
       </div>
     </div>
+    <div className="card-footer" onClick={() => run(inputValue)}>Start Training</div>
   )
 }
 
@@ -172,4 +173,3 @@ function App() {
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
-run()
