@@ -125,7 +125,7 @@ async function trainModel(model, inputs, labels) {
     shuffle: true,
     callbacks: tfvis.show.fitCallbacks(
       containerTrain,
-      ['loss', 'mse'], 
+      ['loss'], 
       { height: 200, callbacks: ['onEpochEnd'] }
     )
   });
@@ -141,5 +141,5 @@ function TensorFlowDemo() {
   )
 } 
 
-document.addEventListener('DOMContentLoaded', run);
 ReactDOM.render(<TensorFlowDemo />, document.getElementById("root"));
+run()
