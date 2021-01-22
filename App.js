@@ -1,15 +1,10 @@
-import Parameter from "./Parameter"
-import Scatter from "./Scatter"
-import Model from "./Model"
-import Train from "./Train"
+import Card from "./Card"
 
 function App() {
+  const cards = ["parameter", "scatter", "model", "train"]
   return (
     <>
-      <Parameter />
-      <Scatter />
-      <Model />
-      <Train />
+      cards.map(card => <Card title={card} />)
     </>
   )
 }
