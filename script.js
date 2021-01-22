@@ -31,7 +31,6 @@ async function run(inputEpochs) {
     {
       xLabel: 'Horsepower',
       yLabel: 'MPG',
-      width: 450
     }
   );
 
