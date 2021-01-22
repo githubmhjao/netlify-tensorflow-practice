@@ -1,4 +1,4 @@
-const { useState } = React;
+const { useState, useEffect } = React;
 
 /**
  * Get the car data reduced to just the variables we are interested
@@ -131,12 +131,7 @@ async function trainModel(model, inputs, labels, inputEpochs) {
   });
 }
 
-function Parameter() {
-  const [inputValue, setInputValue] = useState(50)
-  const handleInputChange = (e) => {
-    const { value } = e.target
-    setInputValue(value)
-  }
+function Parameter(props) {
   
   return (
     <div className="container">
@@ -144,13 +139,13 @@ function Parameter() {
       <div className="card-body" id="container-parameter">
         <input
               type="number"
-              onChange={handleInputChange}
-              value={inputValue}
+              onChange={props.handleInputChange}
+              value={props.inputValue}
               className="input-number"
               min="5"
             />
       </div>
-      <div className="card-footer" onClick={() => run(inputValue)}>Start Training</div>
+      <div className="card-footer">Start Training</div>
     </div>
   )
 }
@@ -165,9 +160,18 @@ function Card(props) {
 }
 
 function App() {
+
+  const [inputValue, setInputValue] = useState(50)
+  const handleInputChange = (e) => {
+    const { value } = e.target
+    setInputValue(value)
+  }
+
+  useEffect(() => {run(inputValue)}, [inputValue])
+
   const cards = ["scatter", "model", "train"]
   return (<>
-    <Parameter />
+    <Parameter inputValue={inputValue} handleInputChange={handleInputChange}/>
     {cards.map((card, i) => <Card key={i} title={card}/>)}
   </>)
 }
