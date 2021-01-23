@@ -173,7 +173,7 @@ async function predict(model, data) {
   const examples = data.nextTestBatch(20);
   const numExamples = examples.xs.shape[0];
   
-  const examplesPred = model.predict(examples.xs.reshape(numExamples, 28, 28, 1))
+  const examplesPred = model.predict(examples.xs.reshape([numExamples, 28, 28, 1]))
   
   // Create a canvas element to render each example
   for (let i = 0; i < numExamples; i++) {
