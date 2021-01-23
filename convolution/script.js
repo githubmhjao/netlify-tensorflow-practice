@@ -17,6 +17,8 @@ async function showExamples(data) {
         .reshape([28, 28, 1]);
     });
     
+    console.log(imageTensor)
+    
     const canvas = document.createElement('canvas');
     canvas.width = 28;
     canvas.height = 28;
