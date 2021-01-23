@@ -2,8 +2,7 @@ import {MnistData} from './data.js';
 
 async function showExamples(data) {
   // Create a container in the visor
-  const surface =
-    tfvis.visor().surface(document.getElementById("container-surface"));  
+  const surface = document.getElementById("container-surface");  
 
   // Get the examples
   const examples = data.nextTestBatch(20);
@@ -23,7 +22,7 @@ async function showExamples(data) {
     canvas.height = 28;
     canvas.style = 'margin: 4px;';
     await tf.browser.toPixels(imageTensor, canvas);
-    surface.drawArea.appendChild(canvas);
+    surface.appendChild(canvas);
 
     imageTensor.dispose();
   }
