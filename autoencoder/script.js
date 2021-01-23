@@ -174,12 +174,14 @@ async function predict(model, data) {
   const numExamples = examples.xs.shape[0];
   
   const examplesPred = model.predict(examples.xs.reshape([numExamples, 28, 28, 1]))
+  console.log(examplesPred)
+  console.log(examplesPred[0])
   
   // Create a canvas element to render each example
   for (let i = 0; i < numExamples; i++) {
     const imageTensor = tf.tidy(() => {
       // Reshape the image to 28x28 px
-      return tf.tensor2d(examplesPred[i]);
+      return tf.tensor(examplesPred[i]);
     });
     
     const canvas = document.createElement('canvas');
