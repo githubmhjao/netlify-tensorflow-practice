@@ -15,8 +15,6 @@
  * =============================================================================
  */
 
-import * as tf from '@tensorflow/tfjs';
-
 const IMAGE_SIZE = 784;
 const NUM_CLASSES = 10;
 const NUM_DATASET_ELEMENTS = 65000;
