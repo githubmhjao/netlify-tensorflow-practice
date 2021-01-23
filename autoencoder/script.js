@@ -179,7 +179,7 @@ async function predict(model, data) {
   for (let i = 0; i < numExamples; i++) {
     const imageTensor = tf.tidy(() => {
       // Reshape the image to 28x28 px
-      return examplesPred[i];
+      return tf.tensor2d(examplesPred[i]);
     });
     
     const canvas = document.createElement('canvas');
