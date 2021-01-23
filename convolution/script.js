@@ -91,10 +91,7 @@ function getModel() {
 
 async function train(model, data) {
   const metrics = ['loss', 'val_loss', 'acc', 'val_acc'];
-  const container = {
-    name: 'Model Training', tab: 'Model', styles: { height: '1000px' }
-  };
-  const fitCallbacks = tfvis.show.fitCallbacks(container, metrics);
+  const fitCallbacks = tfvis.show.fitCallbacks(document.getElementById("container-train"), metrics);
   
   const BATCH_SIZE = 512;
   const TRAIN_DATA_SIZE = 5500;
