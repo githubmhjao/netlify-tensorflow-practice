@@ -165,6 +165,33 @@ async function train(model, data) {
   });
 }
 
+async function predict(model, data) {
+  // Create a container in the visor
+  const surface = document.getElementById("container-result");  
+
+  // Get the examples
+  const examples = data.nextTestBatch(20);
+  const numExamples = examples.xs.shape[0];
+  
+  const examplesPred = model.predict(examples.xs)
+  
+  // Create a canvas element to render each example
+  for (let i = 0; i < numExamples; i++) {
+    const imageTensor = tf.tidy(() => {
+      // Reshape the image to 28x28 px
+      return examplesPred[i]);
+    });
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = 28;
+    canvas.height = 28;
+    canvas.style = 'margin: 4px;';
+    await tf.browser.toPixels(imageTensor, canvas);
+    surface.appendChild(canvas);
+
+    imageTensor.dispose();
+  }
+}
 
 async function run() {  
   const data = new MnistData();
@@ -175,6 +202,7 @@ async function run() {
   tfvis.show.modelSummary(document.getElementById('container-model'), model);
   
   await train(model, data);
+  await predict(model, data);
 }
 
 document.addEventListener('DOMContentLoaded', run);
